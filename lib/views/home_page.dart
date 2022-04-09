@@ -12,36 +12,110 @@ class HomePage extends StatefulWidget {
 
 
 class _HomePageState extends State<HomePage> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Sample Mixer'),
+        title: Text(this.widget.title),
       ),
-      // body: Container(
-      //   alignment: Alignment.topCenter,
-      //   child: ElevatedButton(
-      //     child: const Text('Home page'),
-      //     onPressed: () {
-      //       Navigator.push(
-      //           context,
-      //           MaterialPageRoute(
-      //               builder: (context) => const SamplesPage(
-      //                 title: 'Recorded sample',
-      //               ),
-      //           ),
-      //       );
-      //     },
-      //   ),
-      // ),
       body: Center(
-        child: Container(
-          color: Colors.amber,
-          child: Row(
-            children: [],
-          ),
-        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ConstrainedBox(
+              constraints: const BoxConstraints.tightFor(
+                  width: 100,
+                  height: 100,
+              ),
+              child: ElevatedButton(
+                child: Text('Recorder'),
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.blueGrey,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(100),
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SamplesPage(
+                        title: 'Recorded samples',
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+            SizedBox(width: 10),
+            ConstrainedBox(
+              constraints: const BoxConstraints.tightFor(
+                width: 100,
+                height: 100,
+              ),
+              child: ElevatedButton(
+                child: Text(
+                  'Recorded samples',
+                  textAlign: TextAlign.center,
+                ),
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.blueGrey,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(100),
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SamplesPage(
+                        title: 'Recorded samples',
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        )
       )
     );
   }
 }
+/*
+Column(
+  crossAxisAlignment: CrossAxisAlignment.stretch,
+  mainAxisSize: MainAxisSize.max,
+  verticalDirection: VerticalDirection.down,
+  children: [
+    Row(
+      children: [
+        Row(
+          children: [
+            ElevatedButton(
+              child: Text('Recorded samples'),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SamplesPage(
+                      title: 'Recorded samples',
+                    ),
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
+        Container(
+          color: Colors.black12,
+          width: 30.0,
+          height: 30.0,
+        ),
+      ],
+    ),
+
+  ],
+),
+*/

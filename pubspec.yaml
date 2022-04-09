@@ -9,6 +9,8 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
+  path: ^1.6.4
+  path_provider: 2.0.9
 
 flutter:
   uses-material-design: true
