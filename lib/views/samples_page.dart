@@ -1,11 +1,9 @@
-import 'dart:async';
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:path_provider/path_provider.dart';
+
+import 'package:toon_fyp_project/utils.dart';
 
 
-class SamplesPage extends StatefulWidget {
+class SamplesPage extends StatefulWidget with FilesService {
   const SamplesPage({Key? key, required this.title}) : super(key: key);
 
   final String title;
@@ -18,34 +16,10 @@ class _SamplesPageState extends State<SamplesPage> {
   String folderName = 'samples';
   List<String> samplesList = [];
 
-  Future<Directory> createOrGetFolderInAppDirectory() async {
-    final Directory _applicationDirectory = (
-        await getApplicationDocumentsDirectory()
-    );
-    final Directory _applicationSamplesDirectory = Directory(
-      '${_applicationDirectory.path}/$folderName/',
-    );
-    if (await _applicationSamplesDirectory.exists()) {
-      return _applicationSamplesDirectory;
-    }
-    final Directory _applicationSamplesNewDirectory = (
-        await _applicationSamplesDirectory.create(recursive: true)
-    );
-    return _applicationSamplesNewDirectory;
-  }
-
-  void listSamples() async {
-    final Directory appDirectory = await createOrGetFolderInAppDirectory();
-    await for (var file in appDirectory.list()) {
-      if (samplesList.contains(file.path)) continue;
-      samplesList.add(file.path);
-    }
-    setState(() {});
-  }
 
   @override
   void initState() {
-    listSamples();
+    FilesService.listSamples(folderName).then((_) => super.setState(() {}));
     super.initState();
   }
 

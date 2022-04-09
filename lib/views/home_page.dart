@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:toon_fyp_project/views/samples_page.dart';
+import 'package:toon_fyp_project/views/recorder_page.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -40,8 +42,8 @@ class _HomePageState extends State<HomePage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const SamplesPage(
-                        title: 'Recorded samples',
+                      builder: (context) => const RecorderPage(
+                        title: 'Recorder',
                       ),
                     ),
                   );
