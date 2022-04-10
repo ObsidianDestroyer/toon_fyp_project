@@ -85,39 +85,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-/*
-Column(
-  crossAxisAlignment: CrossAxisAlignment.stretch,
-  mainAxisSize: MainAxisSize.max,
-  verticalDirection: VerticalDirection.down,
-  children: [
-    Row(
-      children: [
-        Row(
-          children: [
-            ElevatedButton(
-              child: Text('Recorded samples'),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const SamplesPage(
-                      title: 'Recorded samples',
-                    ),
-                  ),
-                );
-              },
-            ),
-          ],
-        ),
-        Container(
-          color: Colors.black12,
-          width: 30.0,
-          height: 30.0,
-        ),
-      ],
-    ),
-
-  ],
-),
-*/

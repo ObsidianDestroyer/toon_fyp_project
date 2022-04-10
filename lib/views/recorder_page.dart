@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:toon_fyp_project/recorder/recorder.dart';
 
 
 
@@ -21,9 +22,8 @@ class _RecorderPageState extends State<RecorderPage> {
       ),
       body: Center(
         child: Container(
-          height: 100,
-          width: 100,
           color: Colors.blueGrey,
+          child: AudioRecorder(),
         ),
       ),
     );

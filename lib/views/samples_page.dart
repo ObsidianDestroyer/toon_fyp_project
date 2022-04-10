@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:toon_fyp_project/utils.dart';
+import 'package:toon_fyp_project/files/files.dart';
 
 
 class SamplesPage extends StatefulWidget with FilesService {
@@ -16,10 +16,14 @@ class _SamplesPageState extends State<SamplesPage> {
   String folderName = 'samples';
   List<String> samplesList = [];
 
-
   @override
   void initState() {
-    FilesService.listSamples(folderName).then((_) => super.setState(() {}));
+    FilesService.listSamples(folderName).then(
+          (samples) {
+            samplesList.addAll(samples);
+            super.setState(() {});
+            },
+    );
     super.initState();
   }
 
@@ -31,16 +35,18 @@ class _SamplesPageState extends State<SamplesPage> {
         title: Text(this.widget.title),
       ),
       body: Center(
-        child: samplesList.isEmpty ? Container(
-          alignment: Alignment.topCenter,
-          child: Card(
-            child: ListTile(
-              title: Text(
-                'Empty',
-                textAlign: TextAlign.center,
+        child: samplesList.isEmpty ? Center(
+            child: Container(
+              alignment: Alignment.topCenter,
+              child: Card(
+                child: ListTile(
+                  title: Text(
+                    'Empty',
+                    textAlign: TextAlign.center,
+                  ),
+                ),
               ),
             ),
-          ),
         ) : ListView.builder(
               itemCount: samplesList.length,
               itemBuilder: (BuildContext context, int index) {
